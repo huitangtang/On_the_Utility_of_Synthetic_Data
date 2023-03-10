@@ -1,2 +1,2 @@
 # On_the_Utility_of_Synthetic_Data
-Code to release for "On the Utility of Synthetic Data for Supervised Learning and Downstream Transferring", submitted as a conference paper under review.
+Code release for "A New Benchmark: On the Utility of Synthetic Data with Blender for Bare Supervised Learning and Downstream Domain Adaptation", accepted by CVPR2023.
