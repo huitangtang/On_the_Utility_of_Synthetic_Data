@@ -1,1 +1,3 @@
+#!/bin/bash
+
 python main.py  --epochs 20  --data_path_source /data/subvisda/train/ --data_path_target /data/subvisda/validation/  --data_path_target_t /data/subvisda/validation/  --num_classes 10  --src train  --tar validation  --tar_t validation  --print_freq 100  --lr 0.0001  --arch resnet50  --num_neurons 128  --cluster_iter 2  --pret_stat ../supervised_learning/checkpoints/SynSL-PreTr-fix_dataset_True-12800000imgs-resnet50-2400000iters-lr0.01-Noneiters_lr-batchsize128-aug_strong-s1/SynSL-PreTr-fix_dataset_True-12800000imgs-resnet50-2400000iters-lr0.01-Noneiters_lr-batchsize128-aug_strong-s1.pth.tar  --extra_mark SynSL
