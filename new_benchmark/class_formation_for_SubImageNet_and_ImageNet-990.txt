@@ -1,0 +1,21 @@
+## 1. Construct SubImageNet training set from ImageNet training set:
+cp -r n04552348 ../../sub_imagenet/train/airplane
+cp -r n03792782 ../../sub_imagenet/train/bicycle
+cp -r n02835271/* ../../sub_imagenet/train/bicycle/
+cp -r n04487081 ../../sub_imagenet/train/bus
+cp -r n03769881/* ../../sub_imagenet/train/bus/
+cp -r n04146614/* ../../sub_imagenet/train/bus/
+mkdir ../../sub_imagenet/train/car/ && cp -r n03895866/* n04037443/* n04285008/* ../../sub_imagenet/train/car/
+cp -r n03658185 ../../sub_imagenet/train/knife
+cp -r n03791053 ../../sub_imagenet/train/motorbike
+cp -r n07715103 ../../sub_imagenet/train/plant
+mkdir ../../sub_imagenet/train/skateboard/ && cp -r n04149813/* n03787032/* ../../sub_imagenet/train/skateboard/
+cp -r n02917067 ../../sub_imagenet/train/train
+mkdir ../../sub_imagenet/train/truck/ && cp -r n03345487/* n03417042/* n03930630/* n04461696/* n04467665/* ../../sub_imagenet/train/truck/
+
+## 2. Construct ImageNet-990 training set from ImageNet training set:
+cp -r n02835271/* n03792782/ && rm -r n02835271 
+cp -r n03769881/* n04146614/* n04487081/ && rm -r n03769881 n04146614
+cp -r n04037443/* n04285008/* n03895866/ && rm -r n04037443 n04285008
+cp -r n03787032/* n04149813/ && rm -r n03787032
+cp -r n03417042/* n03930630/* n04461696/* n04467665/* n03345487/ && rm -r n03417042 n03930630 n04461696 n04467665
