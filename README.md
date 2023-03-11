@@ -19,7 +19,7 @@ The results are saved in the folder `./checkpoints/`.
 
 ## Paper citation
 ```
-@InProceedings{Tang_2023_CVPR,
+@InProceedings{tang2023a,
     author    = {Tang, Hui and Jia, Kui},
     title     = {A New Benchmark: On the Utility of Synthetic Data with Blender for Bare Supervised Learning and Downstream Domain Adaptation},
     booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
