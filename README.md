@@ -7,7 +7,7 @@ Code release for "A New Benchmark: On the Utility of Synthetic Data with Blender
 - torchvision 0.9.0
 
 ## Data preparation
-1. Existing datasets. The references of the used datasets (e.g., VisDA-2017, ImageNet, and MetaShift) are included in the paper.
+1. Existing datasets. The references of the used exsiting datasets (e.g., VisDA-2017, ImageNet, and MetaShift) are included in the paper.
 2. Our new datasets. SynSL is here; SynSL-120K is here; S2RDA is [here](https://pan.baidu.com/s/17C5lRDf7cpGR1kAVS2jS-Q?pwd=61tt).
 
 ## Model training
