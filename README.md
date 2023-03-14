@@ -17,6 +17,9 @@ Code release for "A New Benchmark: On the Utility of Synthetic Data with Blender
 
 The results are saved in the folder `./checkpoints/`.
 
+## Pre-trained checkpoints
+The pre-trained checkpoints for downstream synthetic-to-real classification adaptation are available here.
+
 ## Paper citation
 ```
 @InProceedings{tang2023a,
