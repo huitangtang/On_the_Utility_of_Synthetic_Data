@@ -8,7 +8,7 @@ Code release for "A New Benchmark: On the Utility of Synthetic Data with Blender
 
 ## Data preparation
 1. Existing datasets. The references of the used existing datasets (e.g., VisDA-2017, ImageNet, and MetaShift) are included in the paper.
-2. Our new datasets. SynSL is here, our synthesized 12.8M images of 10 classes (for supervised learning, termed SynSL); SynSL-120K is [here](https://pan.baidu.com/s/10rbAZYQfST1ZhndjOpbDuQ?pwd=av1k), including our synthesized 120K images of 10 classes (train), train+SubImageNet, and three types of test data (i.e., test_IID, test_IID_wo_BG, and test_OOD); S2RDA is [here](https://pan.baidu.com/s/17C5lRDf7cpGR1kAVS2jS-Q?pwd=61tt), including two challenging transfer tasks of S2RDA-49 and S2RDA-MS-39. Please refer to the paper for more details. 
+2. Our new datasets. SynSL is [here](https://pan.baidu.com/s/1Vr0xR9bu8WPHb0Ay5qU-EA?pwd=w109), our synthesized 12.8M images of 10 classes (for supervised learning, termed SynSL); SynSL-120K is [here](https://pan.baidu.com/s/10rbAZYQfST1ZhndjOpbDuQ?pwd=av1k), including our synthesized 120K images of 10 classes (train), train+SubImageNet, and three types of test data (i.e., test_IID, test_IID_wo_BG, and test_OOD); S2RDA is [here](https://pan.baidu.com/s/17C5lRDf7cpGR1kAVS2jS-Q?pwd=61tt), including two challenging transfer tasks of S2RDA-49 and S2RDA-MS-39. Please refer to the paper for more details. 
 
 ## Model training
 1. Install necessary python packages.
