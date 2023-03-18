@@ -1,5 +1,5 @@
 # On_the_Utility_of_Synthetic_Data
-Code release for "A New Benchmark: On the Utility of Synthetic Data with Blender for Bare Supervised Learning and Downstream Domain Adaptation", accepted by CVPR2023.
+Code release for "[A New Benchmark: On the Utility of Synthetic Data with Blender for Bare Supervised Learning and Downstream Domain Adaptation](http://arxiv.org/abs/2303.09165)", accepted by CVPR2023.
 
 ## Requirements
 - python 3.8.8
