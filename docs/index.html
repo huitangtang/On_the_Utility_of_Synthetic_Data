@@ -271,17 +271,15 @@
     <tr>
         <td>
             <div style="text-align: center;">
-                <img src="resources/ovar.png" width="800px">
+                <img src="resources/fig8.png" width="800px">
             </div>
         </td>
     </tr>
     <tr>
         <td>
             <p style="text-align:justify; text-justify:inter-ideograph;">
-            The first row depicts the tasks of object detection and attribute classification in a close-set setting, <i>i.e.</i>, train and test on the same vocabulary set.
-The second row gives qualitative results from our proposed OvarNet,
-which simultaneously localizes, categorizes, and characterizes arbitrary objects in an open-vocabulary scenario. We only show one object per image for ease of visualization, <span style="color: red; "><b>red</b></span> denotes the base category/attribute <i>i.e.</i>,
-seen in the training set, while <span style="color: #1230F5; "><b>blue</b></span> represents the novel category/attribute unseen in the training set.
+            <!--  <i>i.e.</i>  <span style="color: red; "><b>red</b></span>  <span style="color: #1230F5; "><b>blue</b></span>  -->
+		    Sample images from the synthetic (left) domain and the real domains of our introduced S2RDA-49 (middle) and S2RDA-MS-39 (right).
             </p>
         </td>
     </tr>
@@ -298,15 +296,12 @@ seen in the training set, while <span style="color: #1230F5; "><b>blue</b></span
     <tr>
         <td>
             <p style="text-align:justify; text-justify:inter-ideograph;">
-            In this paper, we consider the problem of simultaneously detecting objects and inferring their visual attributes in an image, even for those with no manual annotations provided at the training stage, resembling an open-vocabulary scenario.
+            To solve the basic and important problems in the context of image classification, such as the lack of comprehensive synthetic data research and the insufficient exploration of synthetic-to-real transfer, we in this paper propose to exploit synthetic datasets to explore questions on model generalization, benchmark pre-training strategies for domain adaptation (DA), and build a large-scale benchmark dataset S2RDA for synthetic-to-real transfer, which can push forward future DA research.
 To achieve this goal, we make the following contributions:
-(i) we start with a naive two-stage approach for open-vocabulary object detection and attribute classification, termed CLIP-Attr. The candidate objects are first proposed with an offline RPN and later classified for semantic category and attributes;
-(ii) we combine all available datasets and train with a federated strategy to finetune the CLIP model, aligning the visual representation with attributes,
-additionally, we investigate the efficacy of leveraging freely available online image-caption pairs under weakly supervised learning;
-(iii) in pursuit of efficiency, we train a Faster-RCNN type model end-to-end with knowledge distillation, that performs class-agnostic object proposals and classification on semantic categories and attributes with classifiers generated from a text encoder;
-Finally, (iv) we conduct extensive experiments on VAW, MS-COCO, LSA, and OVAD datasets,
-and show that recognition of semantic category and attributes is complementary for visual scene understanding, <i>i.e.</i>, jointly training object detection and attributes prediction largely outperform existing approaches that treat the two tasks independently,
-demonstrating strong generalization ability to novel attributes and categories.
+(i) under the well-controlled, IID data setting enabled by 3D rendering, we systematically verify the typical, important learning insights, e.g., shortcut learning, and discover the new laws of various data regimes and network architectures in generalization;
+(ii) we further investigate the effect of image formation factors on generalization, e.g., object scale, material texture, illumination, camera viewpoint, and background in a 3D scene;
+(iii) we use the simulation-to-reality adaptation as a downstream task for comparing the transferability between synthetic and real data when used for pre-training, which demonstrates that synthetic data pre-training is also promising to improve real test results;
+Finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image classification, termed S2RDA, which provides more significant challenges for transfer from simulation to reality.
             </p>
         </td>
     </tr>
