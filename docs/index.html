@@ -280,6 +280,10 @@
             <p style="text-align:justify; text-justify:inter-ideograph;">
             <!--  <i>i.e.</i>  <span style="color: red; "><b>red</b></span>  <span style="color: #1230F5; "><b>blue</b></span>  -->
 		    Sample images from the synthetic (left) domain and the real domains of our introduced S2RDA-49 (middle) and S2RDA-MS-39 (right).
+		    The real domain of S2RDA-49 comprises 60, 535 images of 49 classes, collected from ImageNet validation set, ObjectNet, VisDA-2017 validation set, and the web. 
+		    For S2RDA-MS-39, the real domain collects 41, 735 natural images exclusive for 39 classes from MetaShift, which contain complex and distinct contexts, 
+		    e.g., object presence (co-occurrence of different objects), general contexts (indoor or outdoor), and object attributes (color or shape), 
+		    leading to a much harder task.
             </p>
         </td>
     </tr>
@@ -371,24 +375,6 @@ Finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image
 <div style="text-align: center;">
     <h3>Bare Supervsied Learning</h3>
 </div>
-	
-<table>
-    <tr>
-        <td>
-            <div style="text-align: center;">
-                <img src="resources/tab1.png" width="800px">
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <p style="text-align:justify; text-justify:inter-ideograph;">
-            <!--  <i>i.e.</i>  <span style="color: red; "><b>red</b></span>  <span style="color: #1230F5; "><b>blue</b></span>  -->
-		    Fixed-dataset periodic training vs. training on non-repetitive samples.
-            </p>
-        </td>
-    </tr>
-</table>
 
 <table>
     <tr>
@@ -399,17 +385,29 @@ Finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image
                 </b>
             </p>
             <p style="text-align:justify; text-justify:inter-ideograph;">
-                In the Tab., we compare OvarNet to other attribute prediction methods and open-vocabulary object detectors on the VAW test set and COCO validation set.
-As there is no open-vocabulary attribute prediction method developed on the VAW dataset,
-we re-train two models on the <i>full</i> VAW dataset as an oracle comparison, namely, SCoNE and TAP.
-Our best model achieves 68.52/67.62 AP across all attribute classes for the box-given and box-free settings respectively.
-On COCO open-vocabulary object detection,
-we compare with OVR-RCNN, ViLD, Region CLIP, PromptDet, and Detic, our best model obtains 54.10/35.17 AP for novel categories, surpassing the recent state-of-the-art ViLD-ens and Detic by a large margin,
-showing that attributes understanding is beneficial for open-vocabulary object recognition.
+                With strong data augmentation, the test results on synthetic data without background are good enough to show that the synthetically trained models do not learn shortcut solutions relying on context clues.
             </p>
             <div style="text-align: center;">
-                <img src="resources/benchmark_on_coco_vaw.png" width="600px">
+                <img src="resources/tab1.png" width="600px">
             </div>
+	    <p>
+		Training on a fixed dataset vs. non-repetitive samples. FD: Fixed Dataset, True (T) or False (F). DA: Data Augmentation, None (N), Weak (W), or Strong (S). BG: BackGround.
+	    </p>
+	    <br>
+	    <div style="text-align: center;">
+                <img src="resources/fig3.png" width="600px">
+            </div>
+	    <p>
+		 Learning process. (a-c): Training ResNet-50 on a fixed dataset (<span style="color: blue; "><b>blue</b></span>) or non-repetitive samples (<span style="color: red; "><b>red</b></span>) for no, weak, and strong data augmentations. 
+		 (d): Training ResNet-50 (<span style="color: red; "><b>red</b></span>), ViT-B (<span style="color: green; "><b>green</b></span>), and Mixer-B (<span style="color: blue; "><b>blue</b></span>) on non-repetitive samples with strong data augmentation.
+	    </p>
+	    <br>
+	    <div style="text-align: center;">
+                <img src="resources/fig4.png" width="600px">
+            </div>
+	    <p>
+		 Attention maps of randomly selected IID test samples, obtained from the ViT-B trained on a fixed dataset or non-repetitive samples with no data augmentation, at the 20-th, 200-th, 2K-th, 20K-th, and 200K-th training iterations.
+	    </p>
         </td>
     </tr>
 
