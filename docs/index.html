@@ -297,7 +297,7 @@
         <td>
             <p style="text-align:justify; text-justify:inter-ideograph;">
             To solve the basic and important problems in the context of image classification, such as the lack of comprehensive synthetic data research and the insufficient exploration of synthetic-to-real transfer, we in this paper propose to exploit synthetic datasets to explore questions on model generalization, benchmark pre-training strategies for domain adaptation (DA), and build a large-scale benchmark dataset S2RDA for synthetic-to-real transfer, which can push forward future DA research.
-To achieve this goal, we make the following contributions:
+Specifically, we make the following contributions:
 (i) under the well-controlled, IID data setting enabled by 3D rendering, we systematically verify the typical, important learning insights, e.g., shortcut learning, and discover the new laws of various data regimes and network architectures in generalization;
 (ii) we further investigate the effect of image formation factors on generalization, e.g., object scale, material texture, illumination, camera viewpoint, and background in a 3D scene;
 (iii) we use the simulation-to-reality adaptation as a downstream task for comparing the transferability between synthetic and real data when used for pre-training, which demonstrates that synthetic data pre-training is also promising to improve real test results;
@@ -310,14 +310,14 @@ Finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image
 <br>
 <hr>
 <div style="text-align: center;">
-    <h2>Architecture</h2>
+    <h2>Background</h2>
 </div>
 
 <table>
     <tr>
         <td>
             <div style="text-align: center;">
-                <img src="resources/reverse_models.png" width="800px">
+                <img src="resources/fig1.png" width="800px">
             </div>
         </td>
     </tr>
@@ -325,9 +325,38 @@ Finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image
         <td>
             <p style="text-align:justify; text-justify:inter-ideograph;">
                 <br>
-                An overview of the proposed method.
-<b>Left:</b> the two-step training procedure for finetuning the pre-trained CLIP to get CLIP-Attr that better aligns the regional visual feature to attributes. <b>Step-I:</b>  naive federate training by base attribute annotations. <b>Step-II:</b>  training by image-caption pairs. We first conduct RPN on the whole image to get box-level crops, parse the caption to get noun phrases, categories, and attributes, and then match these fine-grained concepts for weakly supervised training.
- <b>Right:</b> the proposed one-stage framework OvarNet. We inherit the CLIP-Attr for open-vocabulary object attribute recognition. Regional visual feature is learned from the attentional pooling of proposals; while attribute concept embedding is extracted from the text encoder. Solid lines declare the standard federated training regime. Dashed lines denote training by knowledge distillation with CLIP-Attr.
+                Problem definition of unsupervised domain adaptation (UDA).
+		The great success of deep learning relies on massive labeled data. Many tasks lack labeled data. How to address this problem?
+		We can tackle it with data-efficient learning, such as transfer learning, UDA, etc. If the new task lacks high-quality training data, the knowledge from the previous task can be transferred to the new task.
+		We focus on the typical scenario of UDA — transfer knowledge of synthetic data to help classify real data.
+<!-- <b>Left:</b> the two-step training procedure for finetuning the pre-trained CLIP to get CLIP-Attr that better aligns the regional visual feature to attributes. <b>Step-I:</b>  naive federate training by base attribute annotations. <b>Step-II:</b>  training by image-caption pairs. We first conduct RPN on the whole image to get box-level crops, parse the caption to get noun phrases, categories, and attributes, and then match these fine-grained concepts for weakly supervised training.
+ <b>Right:</b> the proposed one-stage framework OvarNet. We inherit the CLIP-Attr for open-vocabulary object attribute recognition. Regional visual feature is learned from the attentional pooling of proposals; while attribute concept embedding is extracted from the text encoder. Solid lines declare the standard federated training regime. Dashed lines denote training by knowledge distillation with CLIP-Attr. -->
+            </p>
+        </td>
+    </tr>
+</table>
+	
+<br>
+<hr>
+<div style="text-align: center;">
+    <h2>Data Synthesis via Domain Randomization</h2>
+</div>
+
+<table>
+    <tr>
+        <td>
+            <div style="text-align: center;">
+                <img src="resources/fig2.png" width="800px">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+                <br>
+                Sample images from the training (left) and validation (middle) domains of VisDA-2017 and our synthesized data (right).
+		It is noteworthy that VisDA-2017 generates synthetic images by rendering 3D models just under varied camera angles and lighting conditions. 
+		Differently, we vary the values of much more image variation factors, leading to more realistic and diverse samples.
             </p>
         </td>
     </tr>
@@ -336,15 +365,37 @@ Finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image
 <br>
 <hr>
 <div style="text-align: center;">
-    <h2>Quantitative Results</h2>
+    <h2>Experiment and Evaluation</h2>
 </div>
+
+<div style="text-align: center;">
+    <h3>Bare Supervsied Learning</h3>
+</div>
+	
+<table>
+    <tr>
+        <td>
+            <div style="text-align: center;">
+                <img src="resources/tab1.png" width="800px">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+            <!--  <i>i.e.</i>  <span style="color: red; "><b>red</b></span>  <span style="color: #1230F5; "><b>blue</b></span>  -->
+		    Fixed-dataset periodic training vs. training on non-repetitive samples.
+            </p>
+        </td>
+    </tr>
+</table>
 
 <table>
     <tr>
         <td>
             <p>
                 <b>
-                    R1: Benchmark on COCO and VAW Datasets
+                    R1: Fixed-Dataset Periodic Training vs. Training on Non-Repetitive Samples
                 </b>
             </p>
             <p style="text-align:justify; text-justify:inter-ideograph;">
