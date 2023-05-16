@@ -373,7 +373,7 @@ Finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image
 </div>
 
 <div style="text-align: center;">
-    <h3>Bare Supervsied Learning</h3>
+    <h3>Empirical Study on Supervised Learning</h3>
 </div>
 
 <table>
@@ -387,15 +387,16 @@ Finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image
             <p style="text-align:justify; text-justify:inter-ideograph;">
                 With strong data augmentation, the test results on synthetic data without background are good enough to show that the synthetically trained models do not learn shortcut solutions relying on context clues.
             </p>
+	    <br>
             <div style="text-align: center;">
-                <img src="resources/tab1.png" width="600px">
+                <img src="resources/tab1.png" width="900px">
             </div>
 	    <p>
 		Training on a fixed dataset vs. non-repetitive samples. FD: Fixed Dataset, True (T) or False (F). DA: Data Augmentation, None (N), Weak (W), or Strong (S). BG: BackGround.
 	    </p>
 	    <br>
 	    <div style="text-align: center;">
-                <img src="resources/fig3.png" width="600px">
+                <img src="resources/fig3.png" width="800px">
             </div>
 	    <p>
 		 Learning process. (a-c): Training ResNet-50 on a fixed dataset (<span style="color: blue; "><b>blue</b></span>) or non-repetitive samples (<span style="color: red; "><b>red</b></span>) for no, weak, and strong data augmentations. 
@@ -403,7 +404,7 @@ Finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image
 	    </p>
 	    <br>
 	    <div style="text-align: center;">
-                <img src="resources/fig4.png" width="600px">
+                <img src="resources/fig4.png" width="800px">
             </div>
 	    <p>
 		 Attention maps of randomly selected IID test samples, obtained from the ViT-B trained on a fixed dataset or non-repetitive samples with no data augmentation, at the 20-th, 200-th, 2K-th, 20K-th, and 200K-th training iterations.
@@ -417,18 +418,12 @@ Finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image
             <br>
             <p>
                 <b>
-                    R2: Cross-dataset Transfer on OVAD Benchmark
+                    R2: Evaluating Various Network Architectures
                 </b>
             </p>
             <p style="text-align:justify; text-justify:inter-ideograph;">
-                We compare with other state-of-the-art methods on OVAD benchmark,
-following the same evaluation protocol, we conduct zero-shot cross-dataset transfer evaluation with CLIP-Attr and OvarNet trained on COCO Caption dataset.
-Metric is average precision (AP) over different attribute frequency distributions, 'head', 'medium', and 'tail'.
-As shown in the Tab., our proposed models largely outperform other competitors by a noticeable margin.
+                In IID tests, ViT performs surprisingly poorly whatever the data augmentation is and even the triple number of training epochs does not improve much.
             </p>
-            <div style="text-align: center;">
-                <img src="resources/benchmark_on_ovad.png" width="500px">
-            </div>
         </td>
     </tr>
 
@@ -437,19 +432,40 @@ As shown in the Tab., our proposed models largely outperform other competitors b
             <br>
             <p>
                 <b>
-                    R3: Evaluation on LSA Benchmark
+                    R3: Impact of Model Capacity & Impact of Training Data Quantity
                 </b>
             </p>
             <p style="text-align:justify; text-justify:inter-ideograph;">
-                We evaluate the proposed OvarNet on the same benchmark proposed by Pham <i>et al.</i>.
-As OpenTAP employs a Transformer-based architecture with object category and object bounding box as the additional prior inputs, we have evaluated two settings. One is the original OvarNet without any additional input information;
-                the other integrates the object category embedding as an extra token into the transformer encoder layer.
-As shown in the Tab., OvarNet outperforms prompt-based CLIP by a large margin and surpasses OpenTAP (proposed in the benchmark paper) under the same scenario,
-<i>i.e.</i>, with additional category embedding introduced. 'Attribute prompt' means the prompt designed with formats similar to "A photo of something that is [attribute]", while 'object-attribute prompt' denotes "A photo of [category] [attribute]". For the 'combined prompt', the outputs of the 'attribute prompt' and the 'object-attribute prompt' are weighted average.
+                There is always a bottleneck from synthetic data to OOD/real data, where increasing data size and model capacity brings no more benefits, and DA to bridge the distribution gap is indispensable except for evolving the image generation pipeline to synthesize more realistic images.
             </p>
+	    <br>
             <div style="text-align: center;">
-                <img src="resources/benchmark_on_lsa.png" width="500px">
+                <img src="resources/fig5.png" width="500px">
             </div>
+	    <p>
+		 Generalization accuracy w.r.t. model capacity.
+	    </p>
+	    <br>
+	    <div style="text-align: center;">
+                <img src="resources/fig6.png" width="500px">
+            </div>
+	    <p>
+		 Generalization accuracy w.r.t. training data quantity.
+	    </p>
+        </td>
+    </tr>
+	
+    <tr>
+        <td>
+            <br>
+            <p>
+                <b>
+                    R4: Impact of Data Augmentations
+                </b>
+            </p>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+                For the data-unrepeatable training, IID and OOD generalizations are some type of zero-sum game w.r.t. the strength of data augmentation.
+            </p>
         </td>
     </tr>
 
@@ -458,25 +474,216 @@ As shown in the Tab., OvarNet outperforms prompt-based CLIP by a large margin an
 <br>
 <hr>
 <div style="text-align: center;">
-    <h2>Visualizations</h2>
+    <h3>Assessing Image Variation Factors</h3>
 </div>
 
 <table>
     <tr>
         <td>
             <p style="text-align:justify; text-justify:inter-ideograph;">
-                In the following Fig., we show the qualitative results
-                of OvarNet on VAW and MS-COCO benchmarks.
-                OvarNet is capable of accurately localizing, recognizing,
-                and characterizing objects based on a broad variety
-                of novel categories and attributes.
+		In this table, we explore how variation factors of an image affect the model generalization, 
+		such as object scale, material texture, illumination, camera viewpoint, and background. 
+		We find that different rendering variation factors and even their different values have uneven importance to model generalization. 
+		The observations also stress the under-explored topic of data generation — AutoSimulate, namely Weighted Rendering, 
+		which learns distributions of image variation factors from real/target data.
             </p>
+	    <br>
             <div style="text-align: center;">
-                <img src="resources/qualitative_results.png" width="800px">
+                <img src="resources/tab2.png" width="500px">
             </div>
+	    <p>
+		 Fix vs. randomize image variation factors (ResNet-50).
+	    </p>
         </td>
     </tr>
 </table>
+
+<br>
+<hr>
+<div style="text-align: center;">
+    <h3>Exploring Pre-training for Domain Adaptation</h3>
+</div>
+
+<table>
+    <tr>
+        <td>
+            <p>
+                <b>
+                    R1: The Importance of Pre-training for DA
+                </b>
+            </p>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+                DA fails without pre-training. With no pre-training, the very baseline No Adaptation that trains the model only on the labeled source data, 
+		outperforms all compared DA methods in overall accuracy, despite the worst mean class precision.
+            </p>
+	    <br>
+            <div style="text-align: center;">
+                <img src="resources/tab3.png" width="900px">
+            </div>
+	    <p>
+		Comparing different pre-training schemes. 
+		⋆: Official checkpoint. Green or red: Best Acc. or Mean in each row. Ours w. SelfSup: Sup. pre-training with contrastive learning.
+	    </p>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+	    <br>
+            <p>
+                <b>
+                    R2: Effects of Different Pre-training Schemes
+                </b>
+            </p>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+                Different DA methods exhibit different relative advantages under different pre-training data. 
+		When pre-training on our synthesized data, MCD achieves the best results; 
+		when pre-training on Ours+SubImageNet, DisClusterDA outperforms the others;
+		when pre-training on ImageNet⋆, SRDC yields the best performance. 
+		What’s worse, the reliability of existing DA method evaluation criteria is unguaranteed. 
+		With different pre-training schemes, the best performance is achieved by different DA methods.
+            </p>
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+	    <br>
+            <p>
+                <b>
+                    R3: Synthetic Data Pre-training vs. Real Data Pre-training
+                </b>
+            </p>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+                Synthetic data pre-training is comparable to or better than real data pre-training — Synthetic data pretraining is promising. 
+		Under the same experimental configuration, SynSL pre-training for 24 epochs is comparable to or better than pre-training on ImageNet for 120 epochs.
+            </p>
+	    <br>
+            <div style="text-align: center;">
+                <img src="resources/fig7.png" width="900px">
+            </div>
+	    <p>
+		Learning process (Mean) of MCD (left) and DisClusterDA (right) when varying the pre-training scheme.
+	    </p>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+	    <br>
+            <p>
+                <b>
+                    R4: Implications for Pre-training Data Setting
+                </b>
+            </p>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+                Big Synthesis Small Real is worth deeply researching. Ours+SubImageNet augmenting our synthetic data with a small amount of real data, 
+		achieves remarkable performance gain over Ours, suggesting a promising paradigm of supervised pre-training — Big Synthesis Small Real. 
+		On the other hand, pre-train with target classes first under limited computing resources. With 200K pre-training iterations, 
+		SubImageNet performs much better than ImageNet (10 Epochs).
+            </p>
+        </td>
+    </tr>
+	
+    <tr>
+        <td>
+	    <br>
+            <p>
+                <b>
+                    R5: The Improved Generalization of DA Models
+                </b>
+            </p>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+                Real data pre-training with extra non-target classes, fine-grained target subclasses, or our synthesized data added for target classes helps DA. 
+		ImageNet (120 Epochs) involving both target and non-target classes in pre-training is better than SubImageNet involving only target classes, 
+		indicating that learning rich category relationships is helpful for downstream transferring. 
+		with 200K pre-training iterations, ImageNet-990 performs much worse than ImageNet, implying that pre-training in a fine-grained visual categorization manner may bring surprising benefits. 
+		Ours+SubImageNet adding our synthesized data for target classes in SubImageNet, produces significant improvements and is close to ImageNet (120 Epochs); 
+		ImageNet-990+Ours improves over ImageNet-990, suggesting that synthetic data may help improve the performance further.
+            </p>
+        </td>
+    </tr>
+	
+    <tr>
+        <td>
+	    <br>
+            <p>
+                <b>
+                    R6: Convergence Analysis
+                </b>
+            </p>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+                The convergence from different pre-training schemes for the same DA method differs in speed, stability, and accuracy.
+		SynSL with 24 epochs outperforms ImageNet with 120 epochs significantly; notably, SynSL is on par with or better than ImageNet⋆.
+            </p>
+        </td>
+    </tr>
+</table>
+
+<br>
+<hr>
+<div style="text-align: center;">
+    <h3> A New Synthetic-to-Real Benchmark</h3>
+</div>
+
+<table>
+    <tr>
+        <td>
+            <p>
+                <b>
+                    R1: Dataset Construction
+                </b>
+            </p>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+		Our proposed Synthetic-to-Real benchmark for more practical visual DA (termed S2RDA) includes two challenging transfer tasks of S2RDA-49 and S2RDA-MS-39.
+		In each task, source/synthetic domain samples are synthesized by rendering 3D models from ShapeNet. 
+		The used 3D models are in the same label space as the target/real domain and each class has 12K rendered RGB images.
+            </p>
+	    <br>
+            <div style="text-align: center;">
+                <img src="resources/fig9.png" width="500px">
+            </div>
+	    <p>
+		 In this figure, we show the distribution of the number of images per class in each real domain, which is exhibited to be a long-tailed distribution where a small number of classes dominate.
+	    </p>
+        </td>
+    </tr>
+	
+    <tr>
+        <td>
+	    <br>
+            <p>
+                <b>
+                    R2: Benchmarking DA Methods
+                </b>
+            </p>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+		We report the results on S2RDA in the following table and show t-SNE visualizations in the following figure. 
+		SRDC outperforms the baseline No Adaptation by ∼10% on S2RDA-49 and DisClusterDA outperforms that by ∼5%, verifying the efficacy of these DA methods. 
+		The observations also demonstrate that S2RDA can benchmark different DA methods. Compared to SubVisDA-10, SRDC degrades by ∼7% on S2RDA-49, which is reasonable 
+		as our real domain contains more practical images from real-world sources, though our synthetic data contain much more diversity, e.g., background. 
+		Differently, S2RDA-MS-39, which decreases by >20% over S2RDA-49, evaluates different DA approaches on the worst/extreme cases, making a more comprehensive comparison
+		and acting as a touchstone to examine and advance DA algorithms. Reducing domain gap between simple and difficult backgrounds is by nature one of the key issues in simulation-to-real transfer. 
+		To sum up, S2RDA is a better benchmark than VisDA-2017 and enables a larger room of improvement.
+            </p>
+	    <br>
+            <div style="text-align: center;">
+                <img src="resources/tab4.png" width="800px">
+            </div>
+	    <p>
+		 In this table, we report the domain adaptation performance on S2RDA (ResNet-50).
+	    </p>
+	    <br>
+            <div style="text-align: center;">
+                <img src="resources/fig10.png" width="800px">
+            </div>
+	    <p>
+		 In this figure, we show the t-SNE visualization of target domain features extracted by different models on S2RDA-49 (a-b) and S2RDA-MS-39 (c-d).
+	    </p>
+        </td>
+    </tr>
+</table>
+
 	
 <br>
 <hr>
@@ -486,12 +693,13 @@ As shown in the Tab., OvarNet outperforms prompt-based CLIP by a large margin an
 </div>
       <pre>
   	<code>
-    @InProceedings{chen2023ovarnet,
-    title={OvarNet: Towards Open-vocabulary Object Attribute Recognition},
-    author={Chen, Keyan and Jiang, Xiaolong and Hu, Yao and Tang, Xu and Gao, Yan and Chen, Jianqi and Xie, Weidi},
-    booktitle={CVPR},
-    year={2023}}
-    
+    @InProceedings{tang2023a,
+    author    = {Tang, Hui and Jia, Kui},
+    title     = {A New Benchmark: On the Utility of Synthetic Data with Blender for Bare Supervised Learning and Downstream Domain Adaptation},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2023},
+}
   	</code>
       </pre>
 	
@@ -502,7 +710,7 @@ As shown in the Tab., OvarNet outperforms prompt-based CLIP by a large margin an
     <h2>Acknowledgements</h2>
 </div>
       <p>
-	      Based on a template by <a href="http://web.mit.edu/phillipi/">Phillip Isola</a> and <a href="http://richzhang.github.io/">Richard Zhang</a>.
+	      Based on a template by <a href="https://kyanchen.github.io/OvarNet/">Keyan Chen</a>.
       </p>
 
 <br>
