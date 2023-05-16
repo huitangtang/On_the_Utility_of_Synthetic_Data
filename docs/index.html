@@ -173,15 +173,15 @@
 <br>
 <br>
 <br>
-<table align="center" width="800px">
+<table align="center" width="700px">
     <tr>
-        <td align="center" width="180px">
+        <td align="center" width="300px">
             <div style="text-align: center;">
                 <span style="font-size:16px"><a href="https://huitangtang.github.io/">Hui Tang</a><sup>1, 2</sup></span>
             </div>
         </td>
         
-        <td align="center" width="140px">
+        <td align="center" width="300px">
             <div style="text-align: center;">
                 <span style="font-size:16px">
                     <a href="http://kuijia.site/">Kui Jia</a>
@@ -280,8 +280,8 @@
             <p style="text-align:justify; text-justify:inter-ideograph;">
             <!--  <i>i.e.</i>  <span style="color: red; "><b>red</b></span>  <span style="color: #1230F5; "><b>blue</b></span>  -->
 		    Sample images from the synthetic (left) domain and the real domains of our introduced S2RDA-49 (middle) and S2RDA-MS-39 (right).
-		    The real domain of S2RDA-49 comprises 60, 535 images of 49 classes, collected from ImageNet validation set, ObjectNet, VisDA-2017 validation set, and the web. 
-		    For S2RDA-MS-39, the real domain collects 41, 735 natural images exclusive for 39 classes from MetaShift, which contain complex and distinct contexts, 
+		    The real domain of S2RDA-49 comprises 60,535 images of 49 classes, collected from ImageNet validation set, ObjectNet, VisDA-2017 validation set, and the web. 
+		    For S2RDA-MS-39, the real domain collects 41,735 natural images exclusive for 39 classes from MetaShift, which contain complex and distinct contexts, 
 		    e.g., object presence (co-occurrence of different objects), general contexts (indoor or outdoor), and object attributes (color or shape), 
 		    leading to a much harder task.
             </p>
@@ -305,7 +305,7 @@ Specifically, we make the following contributions:
 (i) under the well-controlled, IID data setting enabled by 3D rendering, we systematically verify the typical, important learning insights, e.g., shortcut learning, and discover the new laws of various data regimes and network architectures in generalization;
 (ii) we further investigate the effect of image formation factors on generalization, e.g., object scale, material texture, illumination, camera viewpoint, and background in a 3D scene;
 (iii) we use the simulation-to-reality adaptation as a downstream task for comparing the transferability between synthetic and real data when used for pre-training, which demonstrates that synthetic data pre-training is also promising to improve real test results;
-Finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image classification, termed S2RDA, which provides more significant challenges for transfer from simulation to reality.
+finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image classification, termed S2RDA, which provides more significant challenges for transfer from simulation to reality.
             </p>
         </td>
     </tr>
@@ -321,7 +321,7 @@ Finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image
     <tr>
         <td>
             <div style="text-align: center;">
-                <img src="resources/fig1.png" width="800px">
+                <img src="resources/fig1.png" width="500px">
             </div>
         </td>
     </tr>
@@ -332,7 +332,7 @@ Finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image
                 Problem definition of unsupervised domain adaptation (UDA).
 		The great success of deep learning relies on massive labeled data. Many tasks lack labeled data. How to address this problem?
 		We can tackle it with data-efficient learning, such as transfer learning, UDA, etc. If the new task lacks high-quality training data, the knowledge from the previous task can be transferred to the new task.
-		We focus on the typical scenario of UDA — transfer knowledge of synthetic data to help classify real data.
+		In this paper, we focus on the typical scenario of UDA — transfer knowledge of synthetic data to help classify real data.
 <!-- <b>Left:</b> the two-step training procedure for finetuning the pre-trained CLIP to get CLIP-Attr that better aligns the regional visual feature to attributes. <b>Step-I:</b>  naive federate training by base attribute annotations. <b>Step-II:</b>  training by image-caption pairs. We first conduct RPN on the whole image to get box-level crops, parse the caption to get noun phrases, categories, and attributes, and then match these fine-grained concepts for weakly supervised training.
  <b>Right:</b> the proposed one-stage framework OvarNet. We inherit the CLIP-Attr for open-vocabulary object attribute recognition. Regional visual feature is learned from the attentional pooling of proposals; while attribute concept embedding is extracted from the text encoder. Solid lines declare the standard federated training regime. Dashed lines denote training by knowledge distillation with CLIP-Attr. -->
             </p>
@@ -391,14 +391,14 @@ Finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image
             <div style="text-align: center;">
                 <img src="resources/tab1.png" width="900px">
             </div>
-	    <p>
+	    <p style="text-align: center;">
 		Training on a fixed dataset vs. non-repetitive samples. FD: Fixed Dataset, True (T) or False (F). DA: Data Augmentation, None (N), Weak (W), or Strong (S). BG: BackGround.
 	    </p>
 	    <br>
 	    <div style="text-align: center;">
                 <img src="resources/fig3.png" width="800px">
             </div>
-	    <p>
+	    <p style="text-align: center;">
 		 Learning process. (a-c): Training ResNet-50 on a fixed dataset (<span style="color: blue; "><b>blue</b></span>) or non-repetitive samples (<span style="color: red; "><b>red</b></span>) for no, weak, and strong data augmentations. 
 		 (d): Training ResNet-50 (<span style="color: red; "><b>red</b></span>), ViT-B (<span style="color: green; "><b>green</b></span>), and Mixer-B (<span style="color: blue; "><b>blue</b></span>) on non-repetitive samples with strong data augmentation.
 	    </p>
@@ -406,7 +406,7 @@ Finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image
 	    <div style="text-align: center;">
                 <img src="resources/fig4.png" width="800px">
             </div>
-	    <p>
+	    <p style="text-align: center;">
 		 Attention maps of randomly selected IID test samples, obtained from the ViT-B trained on a fixed dataset or non-repetitive samples with no data augmentation, at the 20-th, 200-th, 2K-th, 20K-th, and 200K-th training iterations.
 	    </p>
         </td>
@@ -442,14 +442,14 @@ Finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image
             <div style="text-align: center;">
                 <img src="resources/fig5.png" width="500px">
             </div>
-	    <p>
+	    <p style="text-align: center;">
 		 Generalization accuracy w.r.t. model capacity.
 	    </p>
 	    <br>
 	    <div style="text-align: center;">
                 <img src="resources/fig6.png" width="500px">
             </div>
-	    <p>
+	    <p style="text-align: center;">
 		 Generalization accuracy w.r.t. training data quantity.
 	    </p>
         </td>
@@ -491,7 +491,7 @@ Finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image
             <div style="text-align: center;">
                 <img src="resources/tab2.png" width="500px">
             </div>
-	    <p>
+	    <p style="text-align: center;">
 		 Fix vs. randomize image variation factors (ResNet-50).
 	    </p>
         </td>
@@ -520,7 +520,7 @@ Finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image
             <div style="text-align: center;">
                 <img src="resources/tab3.png" width="900px">
             </div>
-	    <p>
+	    <p style="text-align: center;">
 		Comparing different pre-training schemes. 
 		⋆: Official checkpoint. Green or red: Best Acc. or Mean in each row. Ours w. SelfSup: Sup. pre-training with contrastive learning.
 	    </p>
@@ -562,7 +562,7 @@ Finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image
             <div style="text-align: center;">
                 <img src="resources/fig7.png" width="900px">
             </div>
-	    <p>
+	    <p style="text-align: center;">
 		Learning process (Mean) of MCD (left) and DisClusterDA (right) when varying the pre-training scheme.
 	    </p>
         </td>
@@ -643,7 +643,7 @@ Finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image
             <div style="text-align: center;">
                 <img src="resources/fig9.png" width="500px">
             </div>
-	    <p>
+	    <p style="text-align: center;">
 		 In this figure, we show the distribution of the number of images per class in each real domain, which is exhibited to be a long-tailed distribution where a small number of classes dominate.
 	    </p>
         </td>
@@ -670,14 +670,14 @@ Finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image
             <div style="text-align: center;">
                 <img src="resources/tab4.png" width="800px">
             </div>
-	    <p>
+	    <p style="text-align: center;">
 		 In this table, we report the domain adaptation performance on S2RDA (ResNet-50).
 	    </p>
 	    <br>
             <div style="text-align: center;">
                 <img src="resources/fig10.png" width="800px">
             </div>
-	    <p>
+	    <p style="text-align: center;">
 		 In this figure, we show the t-SNE visualization of target domain features extracted by different models on S2RDA-49 (a-b) and S2RDA-MS-39 (c-d).
 	    </p>
         </td>
@@ -694,12 +694,11 @@ Finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image
       <pre>
   	<code>
     @InProceedings{tang2023a,
-    author    = {Tang, Hui and Jia, Kui},
-    title     = {A New Benchmark: On the Utility of Synthetic Data with Blender for Bare Supervised Learning and Downstream Domain Adaptation},
+    author = {Tang, Hui and Jia, Kui},
+    title = {A New Benchmark: On the Utility of Synthetic Data with Blender for Bare Supervised Learning and Downstream Domain Adaptation},
     booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-    month     = {June},
-    year      = {2023},
-}
+    month = {June},
+    year = {2023}}
   	</code>
       </pre>
 	
