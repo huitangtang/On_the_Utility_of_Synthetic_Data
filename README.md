@@ -24,7 +24,7 @@ The pre-trained checkpoints for downstream synthetic-to-real classification adap
 
 ## Paper citation
 ```
-@InProceedings{tang2023a,
+@InProceedings{tang2023new,
     author    = {Tang, Hui and Jia, Kui},
     title     = {A New Benchmark: On the Utility of Synthetic Data with Blender for Bare Supervised Learning and Downstream Domain Adaptation},
     booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
