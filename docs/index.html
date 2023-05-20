@@ -647,6 +647,10 @@ finally, (iv) we develop a new large-scale synthetic-to-real benchmark for image
 		Our proposed Synthetic-to-Real benchmark for more practical visual DA (termed S2RDA) includes two challenging transfer tasks of S2RDA-49 and S2RDA-MS-39.
 		In each task, source/synthetic domain samples are synthesized by rendering 3D models from ShapeNet. 
 		The used 3D models are in the same label space as the target/real domain and each class has 12K rendered RGB images. 
+		The real domain of S2RDA-49 comprises 60,535 images of 49 classes, collected from ImageNet validation set, ObjectNet, VisDA-2017 validation set, and the web. 
+		For S2RDA-MS-39, the real domain collects 41,735 natural images exclusive for 39 classes from MetaShift, which contain complex and distinct contexts, 
+		e.g., object presence (co-occurrence of different objects), general contexts (indoor or outdoor), and object attributes (color or shape), 
+		leading to a much harder task. 
 		Compared to VisDA-2017, our introduced S2RDA contains more categories, 
 		more realistically synthesized source domain data coming for free, 
 		and more complicated target domain data collected from diverse real-world sources, 
