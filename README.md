@@ -23,7 +23,7 @@ One can get access to our datasets via Google Drive (above) or Baidu Netdisk (be
 The results are saved in the folder `./checkpoints/`.
 
 ## Pre-trained checkpoints
-The pre-trained checkpoints for downstream synthetic-to-real classification adaptation are available [here](https://pan.baidu.com/s/1Oj1EubGWHOn_Hz8B8Dfh0g?pwd=9x2y), and they are obtained at the last pre-training iteration.
+The pre-trained checkpoints for downstream synthetic-to-real classification adaptation are available [here](https://drive.google.com/drive/folders/1g4uqLxlgC2txarIgJqSbpI8OAkgkjG4V?usp=sharing) or [there](https://pan.baidu.com/s/1Oj1EubGWHOn_Hz8B8Dfh0g?pwd=9x2y), and they are obtained at the last pre-training iteration.
 
 ## Paper citation
 ```
