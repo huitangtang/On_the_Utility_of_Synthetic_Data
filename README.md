@@ -13,7 +13,7 @@ One can get access to our datasets via Google Drive (above) or Baidu Netdisk (be
 
 ## Data preparation
 1. Existing datasets. The references of the used existing datasets (e.g., ShapeNet, VisDA-2017, ImageNet, MetaShift, and ObjectNet) are included in the paper.
-2. Our new datasets. SynSL is [here](https://pan.baidu.com/s/1Vr0xR9bu8WPHb0Ay5qU-EA?pwd=w109), our synthesized 12.8M images of 10 classes (for supervised learning, termed SynSL); SynSL-120K is [here](https://pan.baidu.com/s/10rbAZYQfST1ZhndjOpbDuQ?pwd=av1k), including our synthesized 120K images of 10 classes (train), train+SubImageNet, and three types of test data (i.e., test_IID, test_IID_wo_BG, and test_OOD); **S2RDA is [here](https://pan.baidu.com/s/1fHHaqrEHbUZLXEg9XKpgSg?pwd=w9wa), including two challenging transfer tasks of S2RDA-49 and S2RDA-MS-39.** Please refer to the paper for more details.
+2. Our new datasets. One can download them from the link above; otherwise, download them from the link below. SynSL is [here](https://pan.baidu.com/s/1Vr0xR9bu8WPHb0Ay5qU-EA?pwd=w109), our synthesized 12.8M images of 10 classes (for supervised learning, termed SynSL); SynSL-120K is [here](https://pan.baidu.com/s/10rbAZYQfST1ZhndjOpbDuQ?pwd=av1k), including our synthesized 120K images of 10 classes (train), train+SubImageNet, and three types of test data (i.e., test_IID, test_IID_wo_BG, and test_OOD); **S2RDA is [here](https://pan.baidu.com/s/1fHHaqrEHbUZLXEg9XKpgSg?pwd=w9wa), including two challenging transfer tasks of S2RDA-49 and S2RDA-MS-39.** Please refer to the paper for more details.
 3. The validation and test splits of the real domains in S2RDA are also provided in this repository.
 
 ## Model training
